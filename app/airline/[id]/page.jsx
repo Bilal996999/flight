@@ -11,7 +11,7 @@ const AirlineID = async ({ params }) => {
 
   const airlineFlights = await AirlineFlight(params.id)
 
-  console.log(airlineFlights)
+  //console.log(airlineFlights)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between ">

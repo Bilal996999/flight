@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
-import {IoAirplaneSharp} from "react-icons/io5"
+import { IoAirplaneSharp } from "react-icons/io5"
 
 import SingleFlightFetch from '@/fetch/SingleFlightFetch'
 
-const FlightID = async({ params }) => {
+const FlightID = async ({ params }) => {
 
   const flightDetails = await SingleFlightFetch(params.id)
-  //console.log(flightDetails)
+  console.log(flightDetails)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between py-10">
@@ -22,7 +22,7 @@ const FlightID = async({ params }) => {
         <div className='py-3 mb-7'>
           <h1 className='text-[20px] font-bold text-[#0078D2]'>{flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} Flight Status Today</h1>
           <h5 className='text-sm font-bold text-[#3c3c3d]'>
-          {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} from {flightDetails?.departure.timezone.split('/')[1]} to {flightDetails?.arrival.timezone.split('/')[1]}, {flightDetails?.departure.timezone.split('/')[0]}   </h5>
+            {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} from {flightDetails?.departure.timezone.split('/')[1]} to {flightDetails?.arrival.timezone.split('/')[1]}, {flightDetails?.departure.timezone.split('/')[0]}   </h5>
           <p className='text-sm text-gray-600'>International flight <strong>{flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} </strong> from <b>{flightDetails?.departure.timezone.split('/')[1]}</b> ({flightDetails?.departure.iata}) {flightDetails?.departure.timezone.split('/')[0]} to <b>{flightDetails?.arrival.timezone.split('/')[1]}</b>  ({flightDetails?.arrival.iata}) Canada operated by United Airlines. Scheduled time of departure from Denver International Airport is 19:03 05 October 2023 America/Denver and scheduled time of arrival in Calgary International Airport is 21:35 05 October 2023 America/Edmonton. The duration of the flight is 2 hours 41 minutes.</p>
         </div>
         <p>Current Local Time in {flightDetails?.departure.airport} Airport Thursday, <strong>October 05, 2023 22:40</strong></p>
@@ -40,7 +40,7 @@ const FlightID = async({ params }) => {
                 <p className='text-sm mb-0'>Houston United States</p>
               </div>
               <div className='w-[20%] text-center'>
-                <IoAirplaneSharp className='text-center mx-auto text-[30px]'/>
+                <IoAirplaneSharp className='text-center mx-auto text-[30px]' />
               </div>
               <div className='w-[40%]'>
                 <h2 className='text-[20px] font-bold text-[#484848] mb-1'>ORF</h2>
@@ -50,6 +50,37 @@ const FlightID = async({ params }) => {
             <div className='rounded-sm space-y-1 py-2 bg-[#006100] text-right px-3 w-[30%]'>
               <h2 className='text-[24px] font-bold text-white mb-0'>Scheduled On time</h2>
               <p className='text-sm mb-0 text-white'>Estimated Depart in 12 hours, 48 minutes</p>
+            </div>
+          </div>
+          <div className='flex justify-center items-center'>
+            <div className="flex-1 justify-self-start bg-white text-center py-10 border-2 border-[#EBEFF0]">
+              <span className='rounded-md py-2 px-10 bg-[#0569A8] text-white font-bold text-[13px]'>
+                Departure
+              </span>
+              <h3 className='text-[18px] text-[#484848] font-bold mt-3'>
+                {flightDetails?.departure.airport}
+              </h3>
+              <div className='flex justify-center items-center space-x-2 text-[13px] font-bold text-[#484848]'>
+                <p className='mb-0'>IATA: <span className='text-[#0078D2]'>{flightDetails?.departure.iata}</span></p>
+                <span className='h-1 w-1 rounded-full bg-[#0078D2]'></span>
+                <p className='mb-0'>ICAO: {flightDetails?.departure.icao}</p>
+              </div>
+            </div>
+            <div className="flex-1 justify-self-start bg-white text-center py-10 border-2 border-[#EBEFF0]">
+              <span className='rounded-md py-2 px-10 bg-[#0569A8] text-white font-bold text-[13px]'>
+                Arrival
+              </span>
+              <h3 className='text-[18px] text-[#484848] font-bold mt-3'>
+                {flightDetails?.arrival.airport}
+              </h3>
+              <div className='flex justify-center items-center space-x-2 text-[13px] font-bold text-[#484848]'>
+                <p className='mb-0'>IATA: <span className='text-[#0078D2]'>{flightDetails?.arrival.iata}</span></p>
+                <span className='h-1 w-1 rounded-full bg-[#0078D2]'></span>
+                <p className='mb-0'>ICAO: {flightDetails?.arrival.icao}</p>
+              </div>
+              <div>
+                
+              </div>
             </div>
           </div>
         </div>
