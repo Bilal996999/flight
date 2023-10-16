@@ -2,8 +2,9 @@ import axios from 'axios'
 
 export default async function AirportsFetch() {
 
-  const airports = await axios.get('https://rdpmarketplace.com/backend/airports')
+  const res = await fetch('https://rdpmarketplace.com/backend/airports')
   //console.log(airlines.data)
-  return airports.data
+  const airports = await res.json()
+  return airports
 }
 

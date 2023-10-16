@@ -10,8 +10,8 @@ const FlightID = async ({ params }) => {
   console.log(flightDetails)
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between py-10">
-      <div className='container'>
+    <div className="flex flex-col items-center justify-between py-10">
+      <div className='container mx-auto'>
         <div className='flex justify-start items-center space-x-2 w-full'>
           <Link href='/' className='text-blue-500 no-underline text-sm'>Flight Status</Link>
           <p className='mb-0'>{' >'}</p>
@@ -85,6 +85,85 @@ const FlightID = async ({ params }) => {
           </div>
         </div>
       </div>
+      <section className='w-full'>
+            <div className='container mx-auto mt-20'>
+                <h2 className='text-[#0078d2] text-[28px] mb-6'>Frequently asked questions, answered</h2>
+                <dl className="mt-2 divide-y divide-slate-100">
+                    <details className="group py-4 marker:content-['']">
+                        <summary className="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&amp;::-webkit-details-marker]:hidden">
+                            How long is the flight from {flightDetails?.departure.timezone.split('/')[1]} to {flightDetails?.arrival.timezone.split('/')[1]} ?
+                            <svg className="ml-4 mt-0.5 h-6 w-6 flex-none stroke-slate-700 group-open:stroke-indigo-500" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M18 12H6"></path>
+                                <path className="group-open:hidden" d="M12 6v12"></path>
+                            </svg>
+                        </summary>
+                        <div className="pb-6 pt-6">
+                            <div className="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+                                <p>
+                                On average, nonstop flight takes <b>5 hour(s) 33 minutes</b>, with the flight distance of <b>4201 km (2610 miles).</b>
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+                </dl>
+                <dl className="mt-2 divide-y divide-slate-100">
+                    <details className="group py-4 marker:content-['']">
+                        <summary className="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&amp;::-webkit-details-marker]:hidden">
+                          What type of aircraft is used for the {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} flight?
+                            <svg className="ml-4 mt-0.5 h-6 w-6 flex-none stroke-slate-700 group-open:stroke-indigo-500" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M18 12H6"></path>
+                                <path className="group-open:hidden" d="M12 6v12"></path>
+                            </svg>
+                        </summary>
+                        <div className="pb-6 pt-6">
+                            <div className="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+                                <p>
+                                All <b>{flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number}</b>
+                                 flights are operated using <b>Boeing 757-200 (winglets) Passenger</b> aircraft.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+                </dl>
+                <dl className="mt-2 divide-y divide-slate-100">
+                    <details className="group py-4 marker:content-['']">
+                        <summary className="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&amp;::-webkit-details-marker]:hidden">
+                          Which terminal the flight {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} is arriving at?
+                            <svg className="ml-4 mt-0.5 h-6 w-6 flex-none stroke-slate-700 group-open:stroke-indigo-500" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M18 12H6"></path>
+                                <path className="group-open:hidden" d="M12 6v12"></path>
+                            </svg>
+                        </summary>
+                        <div className="pb-6 pt-6">
+                            <div className="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+                                <p>
+                                Flight  {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} arrives in {flightDetails?.arrival.airport} Airport at 
+                                 <b> Terminal {flightDetails?.arrival.terminal || "Unknown"}.</b>
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+                </dl>
+                <dl className="mt-2 divide-y divide-slate-100">
+                    <details className="group py-4 marker:content-['']">
+                        <summary className="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&amp;::-webkit-details-marker]:hidden">
+                        How many {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} flights are operated a week?
+                            <svg className="ml-4 mt-0.5 h-6 w-6 flex-none stroke-slate-700 group-open:stroke-indigo-500" fill="none" xmlns="http://www.w3.org/2000/svg" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M18 12H6"></path>
+                                <path className="group-open:hidden" d="M12 6v12"></path>
+                            </svg>
+                        </summary>
+                        <div className="pb-6 pt-6">
+                            <div className="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+                                <p>
+                                  <b>6 flights</b> per week. The Flight {flightDetails?.airline.name.split(" ")[0]} {flightDetails?.airline.iata} {flightDetails?.flight.number} is operated on Monday, Wednesday, Thursday, Friday, Saturday, Sunday.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+                </dl>
+            </div>
+        </section>
     </div>
   )
 }

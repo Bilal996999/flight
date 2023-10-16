@@ -3,7 +3,8 @@ import axios from 'axios'
 
 export default async function SingleFlightFetch(flight_no) {
 
-  const SingleFlightFetch = await axios.get(`https://rdpmarketplace.com/backend/flight/${flight_no}`)
+  const res = await fetch(`https://rdpmarketplace.com/backend/flight/${flight_no}`)
   //console.log(SingleFlightFetch.data.data)
-  return SingleFlightFetch.data.data
+  const SingleFlightFetch = await res.json()
+  return SingleFlightFetch.data
 }

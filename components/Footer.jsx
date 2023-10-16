@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
         <div className='bg-[url(https://cdn.flight-status.info/images/footer-pattern.jpg)] bg-repeat py-[80px]'>
-            <div className='container'>
+            <div className='container mx-auto'>
                 <div className='flex justify-between items-start flex-wrap'>
                     <div className='max-xl:w-[25%] pr-[50px] max-lg:w-[50%] max-sm:w-[100%]'>
                         <h3 className='text-[20px] font-bold text-white'>

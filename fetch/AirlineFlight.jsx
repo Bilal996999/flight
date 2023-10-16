@@ -1,9 +1,11 @@
 import AirlineTable from '@/components/AirlineTable';
 import axios from 'axios'
 
-export default async function AirlineFlight(slug) {
+export default async function AirlineFlight() {
 
-  const airlinesFlights = await axios.get(`https://rdpmarketplace.com/backend/airline-flight/${slug}`)
-  //console.log(airlines.data)
-  return airlinesFlights.data.data
+  const res = await fetch(`https://rdpmarketplace.com/backend/airlineflightlatest`)
+  const airlinesFlights = await res.json()
+  //console.log(airlinesFlights)
+  
+  return airlinesFlights.data
 }

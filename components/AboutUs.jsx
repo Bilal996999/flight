@@ -4,7 +4,7 @@ import AboutusFetch from '@/fetch/AboutusFetch'
 const AboutUs = async() => {
     const aboutusData = await AboutusFetch()
     
-    console.log(aboutusData)
+    //console.log(aboutusData)
 
     return (
         <div className='container py-[100px]'>

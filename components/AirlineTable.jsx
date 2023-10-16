@@ -1,44 +1,58 @@
 "use client"
 import AirlineFetch from '@/fetch/AirlineFetch';
-import AirlineFlight from '@/fetch/AirlineFlight';
-import AirlineNameFetch from '@/fetch/AirlineNameFetch';
 import Image from 'next/image';
-import HeroFrom from './HeroFrom';
 import Link from 'next/link';
+import { useEffect, useState   } from 'react';
+import HeroContent from '@/components/HeroContent'
 
 
-const AirlineTable = async () => {
+const AirlineTable = () => {
+  const [data, setData] = useState()
+  const [page, setPage] = useState(1)
 
-  const data = await AirlineFetch()
+  useEffect(()=>{
+    myFetch()
+  },[page])
+
+  const myFetch = async() =>{
+    const airline = await AirlineFetch(page)
+    setData(airline)
+    //console.log(data)
+  }
   // const airlineFlights = await AirlineFlight(params)
-  const baseURL = "https://rdpmarketplace.com/backend/"
   const imageLoader = ({ src, width, quality }) => {
     return `https://rdpmarketplace.com/backend/${src}`
   }
 
   return (
     <>
-      <section className='w-100 p-[80px] bg-[url(https://cdn.flight-status.info/images/banner.webp)]'>
-        <div className='container'>
-          <h1 className='text-black text-[32px]'>
-            Flight status tracker - Check the current status of your flight
-          </h1>
-          <p className='text-black text-[14px] mt-6'>Check flight status of more than 500 airlines all in one place. We bring you the best platform to check Flight status.
-            The tracker helps you in collecting the most information about your flights. With the real-time GPS tracking, we make you aware of all information related to a flight such as live flight status, arrival and departure, delay or cancel time of the flights.</p>
-          <div className='bg-white w-100 shadow-sm px-5 py-10 mt-4'>
-            <div className='flex space-x-5 items-center'>
-              <p className='text-[14px] mb-0'>Search by:</p>
-              <span className='block cursor-pointer text-[14px] rounded-full bg-[#0078D2] p-2 text-white'>Airlines and airports status</span>
-            </div>
-            <HeroFrom />
-          </div>
-        </div>
-      </section>
+      <HeroContent/>
 
-      <div className='container pt-20'>
+      <div className='container mx-auto pt-20'>
         <h2 className='text-left w-100 mb-10 text-[#0078d2] text-[24px]'>List Airlines for checking Flight Status</h2>
 
-        <div className='relative overflow-x-auto w-100 mx-auto'>
+        <div className='relative overflow-x-auto w-100 mx-auto text-sm'>
+        <div className='flex items-center justify-start space-x-3 mb-4 w-[30%]'>
+            <div className='bg-[#0078d2] py-1 px-3 text-white cursor-pointer' onClick={()=> setPage((prev)=>(
+              prev - 1
+              ))}>
+              <p>{'<<'}</p>
+            </div>
+            <div className='bg-[#0078d2] py-1 px-3 text-white cursor-pointer' onClick={()=> setPage(1)}>
+              <p>1</p>
+            </div>
+            <div className='bg-[#0078d2] py-1 px-3 text-white cursor-pointer' onClick={()=> setPage(2)}>
+              <p>2</p>
+            </div>
+            <div className='bg-[#0078d2] py-1 px-3 text-white cursor-pointer' onClick={()=> setPage(3)}>
+              <p>3</p>
+            </div>
+            <div className='bg-[#0078d2] py-1 px-3 text-white cursor-pointer' onClick={()=> setPage((prev)=>(
+              prev + 1
+              ))}>
+              <p>{'>>'}</p>
+            </div>
+          </div>
 
           <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
             <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -52,7 +66,7 @@ const AirlineTable = async () => {
             </thead>
             <tbody>
               {
-                data?.data?.slice(0, 32).map((i) => (
+                data?.data?.data?.map((i) => (
                   <tr key={i.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
 
                     <td>
@@ -73,6 +87,7 @@ const AirlineTable = async () => {
                 ))}
             </tbody>
           </table>
+          
         </div>
       </div>
     </>

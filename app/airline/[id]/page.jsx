@@ -2,21 +2,21 @@
 import AirlineTable from '@/components/AirlineTable'
 import AboutUs from '@/components/AboutUs'
 import HeroFrom from '@/components/HeroFrom'
-import AirlineFlight from '@/fetch/AirlineFlight'
+import FlightAgainstAirline from '@/fetch/FlightAgainstAirline'
 import FlightData from '@/constants/flight-data'
 import Link from 'next/link'
 
 
 const AirlineID = async ({ params }) => {
 
-  const airlineFlights = await AirlineFlight(params.id)
+  const airlineFlights = await FlightAgainstAirline(params.id)
 
   //console.log(airlineFlights)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between ">
-      <section className='w-100 p-[80px] bg-[url(https://cdn.flight-status.info/images/banner.webp)]'>
-        <div className='container'>
+      <section className='w-full p-[80px] bg-[url(https://cdn.flight-status.info/images/banner.webp)]'>
+        <div className='container mx-auto'>
           <h1 className='text-white text-[32px]'>
             {airlineFlights[0]?.airline?.name} Flight Status
           </h1>

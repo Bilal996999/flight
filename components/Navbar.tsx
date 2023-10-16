@@ -10,9 +10,11 @@ import Link from 'next/link';
 const NavbarComponent = () => {
     return (
         <header className='bi-header border-b-[1px]'>
-            <div className='container flex flex-wrap items-center justify-between h-[80px] space-x-10'>
+            <div className='container mx-auto flex flex-wrap items-center justify-between h-[80px] space-x-10'>
                 <div className='flex-col self-center justify-center text-white'>
-                    <h2 className='font-bold text-[18px]'><Link href='/' className='no-underline text-white'>LOGO HERE</Link></h2>
+                    <h2 className='font-bold text-[18px]'><Link href='/' className='no-underline text-white'>
+                        LOGO HERE
+                    </Link></h2>
                 </div>
                 <div className='flex-col self-center justify-center text-black'>
                     <ul className='flex space-x-10 mb-0'>

@@ -1,8 +1,7 @@
-import axios from 'axios'
-
 export default async function AirlineNameFetch(name) {
 
-    const airline = await axios.get(`http://localhost/flight/airline/${name}`)
+    const res = await fetch(`https://rdpmarketplace.com/backend/airline/${name}`)
+    const airline = await res.json()
     //console.log(airline.data)
-    return airline.data.data
+    return airline.data
   }
