@@ -16,7 +16,7 @@ const page = async ({ params }) => {
             <section className='p-[80px] w-full bg-[url(https://cdn.flight-status.info/images/banner.webp)] bg-cover'>
                 <div className='container mx-auto'>
                     <h1 className='text-black text-[32px]'>
-                        Search Result with "america"
+                        Search Result with {`"${params.id}"`}
                     </h1>
                     <div className='bg-white w-100 shadow-sm px-5 py-10 mt-4'>
                         <div className='flex space-x-5 items-center'>
@@ -30,7 +30,7 @@ const page = async ({ params }) => {
 
             <div className='container mx-auto pt-20'>
                 <h2 className='text-left w-100 mb-10 text-[#0078d2] text-[24px]'>
-                    List of airlines with search "{params.id}"
+                    List of airlines with search {`"${params.id}"`}
                 </h2>
 
                 <div className='relative overflow-x-auto w-100 mx-auto text-sm'>
@@ -57,7 +57,7 @@ const page = async ({ params }) => {
             </div>
             <div className='container mx-auto pt-20'>
                 <h2 className='text-left w-100 mb-10 text-[#0078d2] text-[24px]'>
-                    List of airports with search "{params.id}"
+                    List of airports with search {`"${params.id}"`}
                 </h2>
 
                 <div className='relative overflow-x-auto w-100 mx-auto text-sm'>
